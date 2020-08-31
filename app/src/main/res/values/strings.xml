@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Leaderboard</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="skill_fragment_text">Skill IQ Fragment</string>
-    <string name="learning_fragment_text">Learning Fragment</string>
+    <string name="skill_fragment_text">Skill IQ Leaders</string>
+    <string name="learning_fragment_text">Learning Leaders</string>
     <string name="title_activity_leaders_board_main">LeadersBoardMain</string>
     <string name="tab_text_1">Learning Fragment</string>
     <string name="tab_text_2">Skill IQ Fragment</string>

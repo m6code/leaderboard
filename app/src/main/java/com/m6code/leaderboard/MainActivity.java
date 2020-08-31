@@ -37,23 +37,15 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
 
+        Button launchSubmitForm = findViewById(R.id.btn_submit);
+
+        launchSubmitForm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, LeadersBoardMain.class));
+            }
+        });
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        final int id = item.getItemId();
-        if (id == R.id.menu_submit) {
-            // Todo: Launch Submit Form
-            startActivity(new Intent(MainActivity.this, LeadersBoardMain.class));
-        } else {
-            Log.i("error_on_Menu_select", "Wrong Menu Selected");
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
