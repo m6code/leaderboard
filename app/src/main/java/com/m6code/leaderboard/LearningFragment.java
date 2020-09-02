@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,8 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class LearningFragment extends Fragment {
+
+    private RecyclerAdapter mRecyclerAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,8 +65,23 @@ public class LearningFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_learning, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_learning, container, false);
+
+        final RecyclerView coursesList = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        final LinearLayoutManager courseLayoutManager = new LinearLayoutManager(getContext());
+        coursesList.setLayoutManager(courseLayoutManager);
+
+        CourseData data = new CourseData();
+        data.initData();
+
+        mRecyclerAdapter = new RecyclerAdapter(getContext(), data.getDataList());
+        coursesList.setAdapter(mRecyclerAdapter);
+        // Inflate the layout for this fragment
+        return rootView;
+
 
     }
+
 }
