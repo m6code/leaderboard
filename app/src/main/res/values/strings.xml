@@ -8,4 +8,7 @@
     <string name="tab_text_2">Skill IQ Fragment</string>
     <string name="submit">Submit</string>
     <string name="learning_hours_string">\" learning hours, \"</string>
+    <string name="top_learner_badge">Top Learner Badge</string>
+    <string name="title">Title</string>
+    <string name="details">Details</string>
 </resources>
