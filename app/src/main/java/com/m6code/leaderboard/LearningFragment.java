@@ -1,6 +1,5 @@
 package com.m6code.leaderboard;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.m6code.leaderboard.data.LearningDummyData;
 
@@ -21,7 +19,7 @@ import com.m6code.leaderboard.data.LearningDummyData;
  */
 public class LearningFragment extends Fragment {
 
-    private RecyclerAdapter mRecyclerAdapter;
+    private LearningFragRecyclerAdapter mLearningFragRecyclerAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,8 +76,8 @@ public class LearningFragment extends Fragment {
         LearningDummyData data = new LearningDummyData();
         data.initData();
 
-        mRecyclerAdapter = new RecyclerAdapter(getContext(), data.getDataList());
-        learnersList.setAdapter(mRecyclerAdapter);
+        mLearningFragRecyclerAdapter = new LearningFragRecyclerAdapter(getContext(), data.getDataList());
+        learnersList.setAdapter(mLearningFragRecyclerAdapter);
         // Inflate the layout for this fragment
         return rootView;
 
