@@ -3,10 +3,14 @@ package com.m6code.leaderboard;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.m6code.leaderboard.data.SkillDummyData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +63,18 @@ public class SkillFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_skill, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_learning, container, false);
+
+        RecyclerView skillList =  rootView.findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        skillList.setLayoutManager(layoutManager);
+
+        SkillDummyData dummyData = new SkillDummyData();
+        dummyData.initSkillData();
+
+        SkillFragRecyclerAdapter skillFragRecyclerAdapter = new SkillFragRecyclerAdapter(getActivity(), dummyData.getDataList());
+        skillList.setAdapter(skillFragRecyclerAdapter);
+
+        return rootView;
     }
 }

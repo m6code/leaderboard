@@ -1,14 +1,12 @@
 package com.m6code.leaderboard.data;
 
-import com.m6code.leaderboard.data.LearningData;
-
 import java.util.ArrayList;
 
 public class LearningDummyData {
 
-    private ArrayList<com.m6code.leaderboard.data.LearningData> mDataList = new ArrayList<>();
+    private ArrayList<LearningData> mDataList = new ArrayList<>();
 
-    public ArrayList<com.m6code.leaderboard.data.LearningData> getDataList() {
+    public ArrayList<LearningData> getDataList() {
         return mDataList;
     }
 
