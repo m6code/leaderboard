@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -42,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         launchSubmitForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, LeadersBoardMain.class));
+                // Show toast here
+                Snackbar.make(view, "Launch Submit Form", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
 
