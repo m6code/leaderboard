@@ -9,16 +9,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.m6code.leaderboard.data.LearningData;
+
 import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    private final ArrayList<Course> mCourses;
+    private final ArrayList<LearningData> mLearningData;
     private final Context mContext;
     private final LayoutInflater mLayoutInflater;
 
-    public RecyclerAdapter(Context context, ArrayList<Course> courses) {
-        mCourses = courses;
+    public RecyclerAdapter(Context context, ArrayList<LearningData> learningData) {
+        mLearningData = learningData;
         mContext = context;
         mLayoutInflater = LayoutInflater.from(mContext);
     }
@@ -34,28 +36,28 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Course course = mCourses.get(position);
-        holder.mCourseTitle.setText(course.getTitle());
-        holder.mCourseDetails.setText(course.getDetails());
+        LearningData learningData = mLearningData.get(position);
+        holder.mLearnerName.setText(learningData.getName());
+        holder.mLearnerDetails.setText(learningData.getHours() + " learning hours, " + learningData.getCountry()); // Todo: replace " learning hours, " with "mContext.getString(R.string.learning_hours_string)"
         holder.mCurrentPosition = position;
     }
 
     @Override
     public int getItemCount() {
-        return mCourses.size();
+        return mLearningData.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         // Implement your custom views here
-        public final TextView mCourseTitle;
-        public final TextView mCourseDetails;
+        public final TextView mLearnerName;
+        public final TextView mLearnerDetails;
         public int mCurrentPosition;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mCourseTitle = itemView.findViewById(R.id.tv_title);
-            mCourseDetails = itemView.findViewById(R.id.tv_details);
+            mLearnerName = itemView.findViewById(R.id.tv_name);
+            mLearnerDetails = itemView.findViewById(R.id.tv_learning_details);
         }
 
     }

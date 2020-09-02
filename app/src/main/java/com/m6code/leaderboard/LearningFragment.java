@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.m6code.leaderboard.data.LearningDummyData;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link LearningFragment#newInstance} factory method to
@@ -69,15 +71,15 @@ public class LearningFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_learning, container, false);
 
-        final RecyclerView coursesList = (RecyclerView) rootView.findViewById(R.id.recyclerView);
-        final LinearLayoutManager courseLayoutManager = new LinearLayoutManager(getContext());
-        coursesList.setLayoutManager(courseLayoutManager);
+        final RecyclerView learnersList = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        final LinearLayoutManager learningLayoutManager = new LinearLayoutManager(getContext());
+        learnersList.setLayoutManager(learningLayoutManager);
 
-        CourseData data = new CourseData();
+        LearningDummyData data = new LearningDummyData();
         data.initData();
 
         mRecyclerAdapter = new RecyclerAdapter(getContext(), data.getDataList());
-        coursesList.setAdapter(mRecyclerAdapter);
+        learnersList.setAdapter(mRecyclerAdapter);
         // Inflate the layout for this fragment
         return rootView;
 
