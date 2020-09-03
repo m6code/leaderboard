@@ -2,13 +2,9 @@ package com.m6code.leaderboard;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
