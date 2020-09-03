@@ -9,13 +9,12 @@ This project is a very simple Android Project aimed at implementing some simple 
 In the implementation mobile design of the GADS 2020 Leaderboard. The mobile App will display Top 20 learners in the Learning Leaders’ category and Top 20 learners in the Skill IQ Leaders’ category.
 
 This project uses:
-
- a. Multi-Activity Project
- b. View pager
- c. Customizing Toolbar
- d. RecyclerView, RecyclerViewAdapter and CardView.
- e. Making Network Request
- f. Working with Google Form and more...
+ + Multi-Activity Project
+ + View pager
+ + Customizing Toolbar
+ + RecyclerView, RecyclerViewAdapter and CardView.
+ + Making Network Request
+ + Working with Google Form and more...
 
 ### Resources
  - The data  for the List is gotten by making a network request the following API endpoints.
