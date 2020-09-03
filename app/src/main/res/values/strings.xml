@@ -6,11 +6,11 @@
     <string name="title_activity_leaders_board_main">LeadersBoardMain</string>
     <string name="tab_text_1">Learning Fragment</string>
     <string name="tab_text_2">Skill IQ Fragment</string>
-    <string name="learning_hours_string">\" learning hours, \"</string>
+    <string name="learning_hours_string">" learning hours, "</string>
     <string name="top_learner_badge">Top Learner Badge</string>
     <string name="title">Title</string>
     <string name="details">Details</string>
-    <string name="skill_iq_score">\" skill IQ Score, \"</string>
+    <string name="skill_iq_score">" skill IQ Score, "</string>
     <string name="project_submission">Project Submission</string>
     <string name="last_name">Last Name</string>
     <string name="first_name">First Name</string>
