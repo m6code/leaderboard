@@ -9,18 +9,19 @@ This project is a very simple Android Project aimed at implementing some simple 
 In the implementation mobile design of the GADS 2020 Leaderboard. The mobile App will display Top 20 learners in the Learning Leaders’ category and Top 20 learners in the Skill IQ Leaders’ category.
 
 This project uses:
-    a. Multi-Activity Project
-    b. View pager
-    c. Customizing Toolbar
-    d. RecyclerView, RecyclerViewAdapter and CardView.
-    e. Making Network Request
-    f. Working with Google Form and more...
+
+ a. Multi-Activity Project
+ b. View pager
+ c. Customizing Toolbar
+ d. RecyclerView, RecyclerViewAdapter and CardView.
+ e. Making Network Request
+ f. Working with Google Form and more...
 
 ### Resources
-    The data  for the List is gotten by making a network request the following API endpoints.
-    Base URL - https://gadsapi.herokuapp.com
-    The data is in json format, You can Install Json viewer.
-    Learning Leaders - /api/hours
-    Skill IQ Leaders - /api/skilliq
+ - The data  for the List is gotten by making a network request the following API endpoints.
+ - Base URL - https://gadsapi.herokuapp.com
+ - The data is in json format, You can Install Json viewer.
+ - Learning Leaders - /api/hours
+ - Skill IQ Leaders - /api/skilliq
 
-    You can also find all resources and designs needed for this project (here)[https://drive.google.com/drive/folders/1l-huMnFzu0Lh_olBCzHgovsUCwbKouMb?usp=sharing]
+ - You can also find all resources and designs needed for this project [here](https://drive.google.com/drive/folders/1l-huMnFzu0Lh_olBCzHgovsUCwbKouMb?usp=sharing)
