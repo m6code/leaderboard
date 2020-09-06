@@ -16,6 +16,8 @@ import com.m6code.leaderboard.data.SkillData;
 import com.m6code.leaderboard.services.ApiServiceBuilder;
 import com.m6code.leaderboard.services.ApiServices;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,29 +30,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ApiServices apiServices = ApiServiceBuilder.buildApiService(ApiServices.class);
-        Call<LearningData> callLearners = apiServices.getTopLearners();
-        Call<SkillData> callSkills = apiServices.getTopSkillIQScores();
+        Call<List<LearningData>> callLearners = apiServices.getTopLearners();
+        Call<List<SkillData>> callSkills = apiServices.getTopSkillIQScores();
 
-        callLearners.enqueue(new Callback<LearningData>() {
+        callLearners.enqueue(new Callback<List<LearningData>>() {
             @Override
-            public void onResponse(Call<LearningData> call, Response<LearningData> response) {
+            public void onResponse(Call<List<LearningData>> call, Response<List<LearningData>> response) {
                 Log.i("learners response", response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<LearningData> call, Throwable t) {
+            public void onFailure(Call<List<LearningData>> call, Throwable t) {
                 Log.e("fectch learners error", "Failed to get learners");
             }
         });
 
-        callSkills.enqueue(new Callback<SkillData>() {
+        callSkills.enqueue(new Callback<List<SkillData>>() {
             @Override
-            public void onResponse(Call<SkillData> call, Response<SkillData> response) {
+            public void onResponse(Call<List<SkillData>> call, Response<List<SkillData>> response) {
                 Log.i("skills response", response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<SkillData> call, Throwable t) {
+            public void onFailure(Call<List<SkillData>> call, Throwable t) {
                 Log.e("fectch skill error", "Failed to get skills");
             }
         });
