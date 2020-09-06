@@ -1,10 +1,9 @@
 package com.m6code.leaderboard.services;
 
-import com.m6code.leaderboard.data.LearningData;
-import com.m6code.leaderboard.data.SkillData;
+import com.m6code.leaderboard.data.Learner;
+import com.m6code.leaderboard.data.SkillQ;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -12,9 +11,9 @@ import retrofit2.http.GET;
 public interface ApiServices {
 
     @GET("api/hours")
-    Call<List<LearningData>> getTopLearners();
+    Call<ArrayList<Learner>> getTopLearners();
 
     @GET("api/skilliq")
-    Call<ArrayList<SkillData>> getTopSkillIQScores();
+    Call<ArrayList<SkillQ>> getTopSkillIQScores();
 
 }

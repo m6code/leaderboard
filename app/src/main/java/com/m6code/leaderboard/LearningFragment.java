@@ -10,10 +10,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.m6code.leaderboard.data.LearningData;
-import com.m6code.leaderboard.data.LearningDummyData;
+import com.m6code.leaderboard.data.Learner;
 import com.m6code.leaderboard.services.ApiServiceBuilder;
 import com.m6code.leaderboard.services.ApiServices;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,25 +82,25 @@ public class LearningFragment extends Fragment {
         final LinearLayoutManager learningLayoutManager = new LinearLayoutManager(getContext());
         learnersList.setLayoutManager(learningLayoutManager);
 
-//        LearningDummyData data = new LearningDummyData();
+//        LearningData data = new LearningDummyData();
 //        data.initData();
 //
 //        LearningFragRecyclerAdapter learningFragRecyclerAdapter = new LearningFragRecyclerAdapter(getContext(), data.getDataList());
 //        learnersList.setAdapter(learningFragRecyclerAdapter);
 
         ApiServices apiServices = ApiServiceBuilder.buildApiService(ApiServices.class);
-        Call<List<LearningData>> topLearnersRequest = apiServices.getTopLearners();
+        Call<ArrayList<Learner>> topLearnersRequest = apiServices.getTopLearners();
 
-        topLearnersRequest.enqueue(new Callback<List<LearningData>>() {
+        topLearnersRequest.enqueue(new Callback<ArrayList<Learner>>() {
             @Override
-            public void onResponse(Call<List<LearningData>> call, Response<List<LearningData>> response) {
+            public void onResponse(@NotNull Call<ArrayList<Learner>> call, @NotNull Response<ArrayList<Learner>> response) {
                 LearningFragRecyclerAdapter learningFragRecyclerAdapter =
-                        new LearningFragRecyclerAdapter(getContext(), (ArrayList<LearningData>) response.body());
+                        new LearningFragRecyclerAdapter(getContext(), response.body());
                 learnersList.setAdapter(learningFragRecyclerAdapter);
             }
 
             @Override
-            public void onFailure(Call<List<LearningData>> call, Throwable t) {
+            public void onFailure(@NotNull Call<ArrayList<Learner>> call, @NotNull Throwable t) {
                 Toast.makeText(getContext(), "Failed to retrieve Learners", Toast.LENGTH_LONG).show();
             }
         });

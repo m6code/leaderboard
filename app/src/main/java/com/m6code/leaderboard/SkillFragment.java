@@ -10,10 +10,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.m6code.leaderboard.data.SkillData;
-import com.m6code.leaderboard.data.SkillDummyData;
+import com.m6code.leaderboard.data.SkillQ;
 import com.m6code.leaderboard.services.ApiServiceBuilder;
 import com.m6code.leaderboard.services.ApiServices;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -85,17 +86,17 @@ public class SkillFragment extends Fragment {
 //        skillList.setAdapter(skillFragRecyclerAdapter);
 
         ApiServices apiServices = ApiServiceBuilder.buildApiService(ApiServices.class);
-        Call<ArrayList<SkillData>> topSkillsIQRequest = apiServices.getTopSkillIQScores();
+        Call<ArrayList<SkillQ>> topSkillsIQRequest = apiServices.getTopSkillIQScores();
 
-        topSkillsIQRequest.enqueue(new Callback<ArrayList<SkillData>>() {
+        topSkillsIQRequest.enqueue(new Callback<ArrayList<SkillQ>>() {
             @Override
-            public void onResponse(Call<ArrayList<SkillData>> call, Response<ArrayList<SkillData>> response) {
+            public void onResponse(@NotNull Call<ArrayList<SkillQ>> call, @NotNull Response<ArrayList<SkillQ>> response) {
                 SkillFragRecyclerAdapter skillFragRecyclerAdapter = new SkillFragRecyclerAdapter(getActivity(), response.body());
                 skillList.setAdapter(skillFragRecyclerAdapter);
             }
 
             @Override
-            public void onFailure(Call<ArrayList<SkillData>> call, Throwable t) {
+            public void onFailure(@NotNull Call<ArrayList<SkillQ>> call, @NotNull Throwable t) {
                 Toast.makeText(getContext(), "Failed to retrieve Skill IQ", Toast.LENGTH_LONG).show();
             }
         });

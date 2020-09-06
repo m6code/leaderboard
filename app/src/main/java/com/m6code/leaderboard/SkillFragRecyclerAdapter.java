@@ -10,17 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.m6code.leaderboard.data.SkillData;
+import com.m6code.leaderboard.data.SkillQ;
 
 import java.util.ArrayList;
 
 public class SkillFragRecyclerAdapter extends RecyclerView.Adapter<SkillFragRecyclerAdapter.ViewHolder> {
 
-    private final ArrayList<SkillData> mSkillData;
+    private final ArrayList<SkillQ> mSkillData;
     private final Context mContext;
     private final LayoutInflater mLayoutInflater;
 
-    public SkillFragRecyclerAdapter(Context context, ArrayList<SkillData> skillData) {
+    public SkillFragRecyclerAdapter(Context context, ArrayList<SkillQ> skillData) {
         mSkillData = skillData;
         mContext = context;
         mLayoutInflater = LayoutInflater.from(mContext);
@@ -37,10 +37,10 @@ public class SkillFragRecyclerAdapter extends RecyclerView.Adapter<SkillFragRecy
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        SkillData skillData = mSkillData.get(position);
+        SkillQ skillQ = mSkillData.get(position);
         holder.mLearnerBadge.setImageResource(R.drawable.skill_iq_trimmed);
-        holder.mLearnerName.setText(skillData.getName());
-        holder.mLearnerDetails.setText(String.format("%s%s%s", skillData.getScore(), mContext.getString(R.string.skill_iq_score), skillData.getCountry())); //  replace " skill IQ score, " with "mContext.getString(R.string.skill_iq_score)" works also
+        holder.mLearnerName.setText(skillQ.getName());
+        holder.mLearnerDetails.setText(String.format("%s%s%s", skillQ.getScore(), mContext.getString(R.string.skill_iq_score), skillQ.getCountry())); //  replace " skill IQ score, " with "mContext.getString(R.string.skill_iq_score)" works also
         holder.mCurrentPosition = position;
     }
 

@@ -1,57 +1,36 @@
 package com.m6code.leaderboard.data;
 
+import java.util.ArrayList;
+
 public class SkillData {
-    private String name;
-    private String score;
-    private String country;
-    private String badgeUrl;
 
-    public SkillData(String name, String score, String country, String badgeUrl) {
-        this.name = name;
-        this.score = score;
-        this.country = country;
-        this.badgeUrl = badgeUrl;
+    private ArrayList<SkillQ> mDataList = new ArrayList<>();
+
+    public ArrayList<SkillQ> getDataList() {
+        return mDataList;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void initSkillData(){
+        SkillQ s1 = new SkillQ("Reja Blunky", "197", "Ghana", "https://res.cloudinary.com/mikeattara/image/upload/v1596700835/skill-IQ-trimmed.png");
+        SkillQ s2 = new SkillQ("John Lega", "180", "Nigeria", "https://res.cloudinary.com/mikeattara/image/upload/v1596700835/skill-IQ-trimmed.png");
+        SkillQ s3 = new SkillQ("Bujus Banty", "227", "Sierra Lone", "https://res.cloudinary.com/mikeattara/image/upload/v1596700835/skill-IQ-trimmed.png");
+        SkillQ s4 = new SkillQ("Dennis Blanky", "200", "South Africa", "https://res.cloudinary.com/mikeattara/image/upload/v1596700835/skill-IQ-trimmed.png");
+        SkillQ s5 = new SkillQ("Ola Meji Meji", "240", "NIgeria", "https://res.cloudinary.com/mikeattara/image/upload/v1596700835/skill-IQ-trimmed.png");
 
-    public String getScore() {
-        return score;
-    }
+        mDataList.add(s1);
+        mDataList.add(s2);
+        mDataList.add(s3);
+        mDataList.add(s4);
+        mDataList.add(s5);
+        mDataList.add(s1);
+        mDataList.add(s2);
+        mDataList.add(s4);
+        mDataList.add(s1);
+        mDataList.add(s3);
+        mDataList.add(s1);
 
-    public void setScore(String score) {
-        this.score = score;
-    }
 
-    public String getCountry() {
-        return country;
-    }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getBadgeUrl() {
-        return badgeUrl;
-    }
-
-    public void setBadgeUrl(String badgeUrl) {
-        this.badgeUrl = badgeUrl;
-    }
-
-    @Override
-    public String toString() {
-        return "SkillData{" +
-                "name='" + name + '\'' +
-                ", score='" + score + '\'' +
-                ", country='" + country + '\'' +
-                ", badgeURL='" + badgeUrl + '\'' +
-                '}';
     }
 }
