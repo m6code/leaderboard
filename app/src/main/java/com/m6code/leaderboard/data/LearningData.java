@@ -6,13 +6,13 @@ public class LearningData {
     private String name;
     private String hours;
     private String country;
-    private String badgeURL;
+    private String badgeUrl;
 
-    public LearningData(String name, String hours, String country, String badgeURL) {
+    public LearningData(String name, String hours, String country, String badgeUrl) {
         this.name = name;
         this.hours = hours;
         this.country = country;
-        this.badgeURL = badgeURL;
+        this.badgeUrl = badgeUrl;
     }
 
     public String getName() {
@@ -39,11 +39,21 @@ public class LearningData {
         this.country = country;
     }
 
-    public String getBadgeURL() {
-        return badgeURL;
+    public String getBadgeUrl() {
+        return badgeUrl;
     }
 
-    public void setBadgeURL(String badgeURL) {
-        this.badgeURL = badgeURL;
+    public void setBadgeUrl(String badgeUrl) {
+        this.badgeUrl = badgeUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "LearningData{" +
+                "name='" + name + '\'' +
+                ", hours='" + hours + '\'' +
+                ", country='" + country + '\'' +
+                ", badgeURL='" + badgeUrl + '\'' +
+                '}';
     }
 }

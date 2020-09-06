@@ -4,13 +4,13 @@ public class SkillData {
     private String name;
     private String score;
     private String country;
-    private String badgeURL;
+    private String badgeUrl;
 
-    public SkillData(String name, String score, String country, String badgeURL) {
+    public SkillData(String name, String score, String country, String badgeUrl) {
         this.name = name;
         this.score = score;
         this.country = country;
-        this.badgeURL = badgeURL;
+        this.badgeUrl = badgeUrl;
     }
 
     public String getName() {
@@ -37,11 +37,21 @@ public class SkillData {
         this.country = country;
     }
 
-    public String getBadgeURL() {
-        return badgeURL;
+    public String getBadgeUrl() {
+        return badgeUrl;
     }
 
-    public void setBadgeURL(String badgeURL) {
-        this.badgeURL = badgeURL;
+    public void setBadgeUrl(String badgeUrl) {
+        this.badgeUrl = badgeUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "SkillData{" +
+                "name='" + name + '\'' +
+                ", score='" + score + '\'' +
+                ", country='" + country + '\'' +
+                ", badgeURL='" + badgeUrl + '\'' +
+                '}';
     }
 }
