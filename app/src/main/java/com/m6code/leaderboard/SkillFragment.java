@@ -4,12 +4,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.m6code.leaderboard.data.SkillData;
 import com.m6code.leaderboard.data.SkillDummyData;
+import com.m6code.leaderboard.services.ApiServiceBuilder;
+import com.m6code.leaderboard.services.ApiServices;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,11 +78,27 @@ public class SkillFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         skillList.setLayoutManager(layoutManager);
 
-        SkillDummyData dummyData = new SkillDummyData();
-        dummyData.initSkillData();
+//        SkillDummyData dummyData = new SkillDummyData();
+//        dummyData.initSkillData();
+//
+//        SkillFragRecyclerAdapter skillFragRecyclerAdapter = new SkillFragRecyclerAdapter(getActivity(), dummyData.getDataList());
+//        skillList.setAdapter(skillFragRecyclerAdapter);
 
-        SkillFragRecyclerAdapter skillFragRecyclerAdapter = new SkillFragRecyclerAdapter(getActivity(), dummyData.getDataList());
-        skillList.setAdapter(skillFragRecyclerAdapter);
+        ApiServices apiServices = ApiServiceBuilder.buildApiService(ApiServices.class);
+        Call<ArrayList<SkillData>> topSkillsIQRequest = apiServices.getTopSkillIQScores();
+
+        topSkillsIQRequest.enqueue(new Callback<ArrayList<SkillData>>() {
+            @Override
+            public void onResponse(Call<ArrayList<SkillData>> call, Response<ArrayList<SkillData>> response) {
+                SkillFragRecyclerAdapter skillFragRecyclerAdapter = new SkillFragRecyclerAdapter(getActivity(), response.body());
+                skillList.setAdapter(skillFragRecyclerAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<SkillData>> call, Throwable t) {
+                Toast.makeText(getContext(), "Failed to retrieve Skill IQ", Toast.LENGTH_LONG).show();
+            }
+        });
 
         return rootView;
     }

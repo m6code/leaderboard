@@ -3,6 +3,7 @@ package com.m6code.leaderboard.services;
 import com.m6code.leaderboard.data.LearningData;
 import com.m6code.leaderboard.data.SkillData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -14,6 +15,6 @@ public interface ApiServices {
     Call<List<LearningData>> getTopLearners();
 
     @GET("api/skilliq")
-    Call<List<SkillData>> getTopSkillIQScores();
+    Call<ArrayList<SkillData>> getTopSkillIQScores();
 
 }

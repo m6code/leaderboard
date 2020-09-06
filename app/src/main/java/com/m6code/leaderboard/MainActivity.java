@@ -29,33 +29,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ApiServices apiServices = ApiServiceBuilder.buildApiService(ApiServices.class);
-        Call<List<LearningData>> callLearners = apiServices.getTopLearners();
-        Call<List<SkillData>> callSkills = apiServices.getTopSkillIQScores();
-
-        callLearners.enqueue(new Callback<List<LearningData>>() {
-            @Override
-            public void onResponse(Call<List<LearningData>> call, Response<List<LearningData>> response) {
-                Log.i("learners response", response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<List<LearningData>> call, Throwable t) {
-                Log.e("fectch learners error", "Failed to get learners");
-            }
-        });
-
-        callSkills.enqueue(new Callback<List<SkillData>>() {
-            @Override
-            public void onResponse(Call<List<SkillData>> call, Response<List<SkillData>> response) {
-                Log.i("skills response", response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<List<SkillData>> call, Throwable t) {
-                Log.e("fectch skill error", "Failed to get skills");
-            }
-        });
+//        ApiServices apiServices = ApiServiceBuilder.buildApiService(ApiServices.class);
+//        Call<ArrayList<LearningData>> callLearners = apiServices.getTopLearners();
+//        Call<ArrayList<SkillData>> callSkills = apiServices.getTopSkillIQScores();
+//
+//        callLearners.enqueue(new Callback<ArrayList<LearningData>>() {
+//            @Override
+//            public void onResponse(Call<ArrayList<LearningData>> call, Response<ArrayList<LearningData>> response) {
+//                Log.i("learners response", response.body().toString());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<LearningData>> call, Throwable t) {
+//                Log.e("fectch learners error", "Failed to get learners");
+//            }
+//        });
+//
+//        callSkills.enqueue(new Callback<ArrayList<SkillData>>() {
+//            @Override
+//            public void onResponse(Call<ArrayList<SkillData>> call, Response<ArrayList<SkillData>> response) {
+//                Log.i("skills response", response.body().toString());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ArrayList<SkillData>> call, Throwable t) {
+//                Log.e("fectch skill error", "Failed to get skills");
+//            }
+//        });
 
 
 
