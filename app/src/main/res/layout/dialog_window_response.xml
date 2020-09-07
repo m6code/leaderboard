@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/response_popup_ConstraintLayout"
-    android:layout_width="wrap_content"
+    android:layout_width="300dp"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+        tools:srcCompat="@drawable/ic_baseline_warning_24" />
 
     <TextView
         android:id="@+id/response_textView"
@@ -27,10 +27,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/submission_success"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="?android:textColorSecondary"
+        android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/response_imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/response_imageView"
+        tools:text="@string/submission_failure" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,15 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/submit_popup_ConstraintLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="300dp"
+    android:layout_height="250dp"
+    android:backgroundTint="#FFFFFF"
+    app:boxedEdges="all">
 
     <Button
         android:id="@+id/confirm_submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="#FFFFFF"
         android:text="@string/yes"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#F9A825"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +31,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="#FFFFFF"
         android:contentDescription="@android:string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,9 +52,10 @@
         android:gravity="center"
         android:text="@string/are_you_sure"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cancel_imageButton"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintVertical_bias="0.3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

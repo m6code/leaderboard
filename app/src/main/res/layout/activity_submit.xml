@@ -25,6 +25,7 @@
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextProjectLink"
             app:layout_constraintVertical_bias="0.050000012" />
@@ -44,6 +45,7 @@
             android:inputType="textPersonName"
             android:padding="8dp"
             android:singleLine="true"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +66,7 @@
             android:inputType="textEmailAddress"
             android:padding="8dp"
             android:singleLine="true"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +101,8 @@
                 android:inputType="textPersonName"
                 android:padding="8dp"
                 android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextTextLastName"
@@ -114,6 +118,7 @@
                 android:hint="@string/last_name"
                 android:inputType="textPersonName"
                 android:padding="8dp"
+                android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

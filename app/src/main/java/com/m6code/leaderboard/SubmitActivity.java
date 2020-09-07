@@ -1,8 +1,8 @@
 package com.m6code.leaderboard;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -13,12 +13,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SubmitActivity extends AppCompatActivity {
 
-    private ConstraintLayout mSubmitPopUpWindow;
-    private ConstraintLayout mResponsePopUpWindow;
+    private Dialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,33 +38,28 @@ public class SubmitActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Todo: Create popup window to confirm
-                createSubmitPopUpWindow();
+                createSubmitDialogWindow();
             }
         });
-
-        mResponsePopUpWindow = findViewById(R.id.response_popup_ConstraintLayout);
-
-
     }
 
-    public void createSubmitPopUpWindow(){
-        LayoutInflater layoutInflater = (LayoutInflater) SubmitActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View submitPopUp = layoutInflater.inflate(R.layout.popup_window_submit,null);
+    public void createSubmitDialogWindow(){
+
+        mDialog = new Dialog(this);
+        mDialog.setContentView(R.layout.dialog_window_submit);
 
         // Cancel imageButton
-        ImageButton closeIBtn = submitPopUp.findViewById(R.id.cancel_imageButton);
+        ImageButton closeIBtn = mDialog.findViewById(R.id.cancel_imageButton);
         // Yes Button
-        Button continueBtn = submitPopUp.findViewById(R.id.confirm_submit_button);
+        Button continueBtn = mDialog.findViewById(R.id.confirm_submit_button);
+        mDialog.setCanceledOnTouchOutside(false);
+        mDialog.show();
 
-        mSubmitPopUpWindow = submitPopUp.findViewById(R.id.submit_popup_ConstraintLayout);
-
-        PopupWindow confirmSubmitPopUpWindow = new PopupWindow(submitPopUp, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        confirmSubmitPopUpWindow.showAtLocation(mSubmitPopUpWindow, Gravity.CENTER, 0, 0);
 
         closeIBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                confirmSubmitPopUpWindow.dismiss();
+                mDialog.cancel();
             }
         });
 
@@ -72,7 +67,17 @@ public class SubmitActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: Submit form
+                mDialog.dismiss();
                 // todo: show success message dialog
+                    // todo : create dialog
+                mDialog = new Dialog(SubmitActivity.this);
+                mDialog.setContentView(R.layout.dialog_window_response);
+                ImageView responseImg = mDialog.findViewById(R.id.response_imageView);
+                TextView responseTV = mDialog.findViewById(R.id.response_textView);
+                    // todo : populate with appropraite content
+                responseImg.setImageResource(R.drawable.ic_baseline_check_circle_24);
+                responseTV.setText(getString(R.string.submission_success));
+                mDialog.show();
                 Toast.makeText(getApplicationContext(),"Success submission", Toast.LENGTH_SHORT).show();
             }
         });
@@ -80,7 +85,16 @@ public class SubmitActivity extends AppCompatActivity {
         continueBtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                mDialog.dismiss();
                 // TODO: show failure message dialog
+                mDialog = new Dialog(SubmitActivity.this);
+                mDialog.setContentView(R.layout.dialog_window_response);
+                ImageView responseImg = mDialog.findViewById(R.id.response_imageView);
+                TextView responseTV = mDialog.findViewById(R.id.response_textView);
+                // todo : populate with appropraite content
+                responseImg.setImageResource(R.drawable.ic_baseline_warning_24);
+                responseTV.setText(getString(R.string.submission_failure));
+                mDialog.show();
                 Toast.makeText(getApplicationContext(),"Success failure", Toast.LENGTH_SHORT).show();
                 return false;
             }
