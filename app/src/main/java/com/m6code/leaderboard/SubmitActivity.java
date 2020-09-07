@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.m6code.leaderboard.services.ApiFormSubmitService;
 import com.m6code.leaderboard.services.ApiServiceBuilder;
@@ -21,6 +23,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SubmitActivity extends AppCompatActivity {
+
+    private static final String TAG = "SubmitProjectActivity";
 
     private Dialog mDialog;
     private EditText mFirstNameEditText;
@@ -37,6 +41,13 @@ public class SubmitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit);
 
+        // Get EditText Views
+        mFirstNameEditText = findViewById(R.id.editTextTextFirstName);
+        mLastNameEditText = findViewById(R.id.editTextTextLastName);
+        mEmailEditText = findViewById(R.id.editTextTextEmailAddress);
+        mGithubLinkEditText = findViewById(R.id.editTextTextProjectLink);
+        getFormData();
+
         ImageButton backButton = findViewById(R.id.back_imageButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,25 +61,17 @@ public class SubmitActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Todo: Validate form data before creating popup
-                //Create popup window to confirm
-                createSubmitConfirmationDialog();
+                if (isValidFormData()) {
+                    // Create dialog to confirm submit
+                    createSubmitConfirmationDialog();
+                }
             }
         });
 
-        // Get EditText Views
-        mFirstNameEditText = findViewById(R.id.editTextTextFirstName);
-        mLastNameEditText = findViewById(R.id.editTextTextLastName);
-        mEmailEditText = findViewById(R.id.editTextTextEmailAddress);
-        mGithubLinkEditText = findViewById(R.id.editTextTextProjectLink);
-
-        mFirstName = mFirstNameEditText.getText().toString();
-        mLastName = mLastNameEditText.getText().toString();
-        mEmail = mEmailEditText.getText().toString();
-        mGhLink = mGithubLinkEditText.getText().toString();
 
     }
 
-    public void createSubmitConfirmationDialog(){
+    public void createSubmitConfirmationDialog() {
         mDialog = new Dialog(this);
         mDialog.setContentView(R.layout.dialog_window_submit);
         // Cancel imageButton
@@ -104,13 +107,24 @@ public class SubmitActivity extends AppCompatActivity {
                     public void onResponse(@NotNull Call<Void> call, @NotNull Response<Void> response) {
                         // Calls method to create and show success message dialog
                         createResponseDialog(R.drawable.ic_baseline_check_circle_24, R.string.submission_success);
-                        clearFormEntry();
+
+                        if (response.isSuccessful()) {
+                            clearFormEntry();
+                            //Log.e(TAG, "post-onResponse: " + response.message() + "\n\n" + response.body() + "\n\n" + response.errorBody());
+                            Toast.makeText(SubmitActivity.this, "Success " + response.message(), Toast.LENGTH_LONG).show();
+
+                        }
+                        else{
+                            //createResponseDialog(R.drawable.ic_baseline_warning_24, R.string.submission_failure);
+                            Toast.makeText(SubmitActivity.this, "Response Error" + response.errorBody(), Toast.LENGTH_LONG).show();
+                        }
                     }
 
                     @Override
                     public void onFailure(@NotNull Call<Void> call, @NotNull Throwable t) {
                         // Calls method to create and show failure message dialog
-                        createResponseDialog(R.drawable.ic_baseline_warning_24,R.string.submission_failure);
+                        createResponseDialog(R.drawable.ic_baseline_warning_24, R.string.submission_failure);
+                        Toast.makeText(SubmitActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -118,7 +132,7 @@ public class SubmitActivity extends AppCompatActivity {
 
     }
 
-    public void createResponseDialog(int responseImage, int responseText){
+    public void createResponseDialog(int responseImage, int responseText) {
         mDialog.dismiss();
 
         mDialog = new Dialog(SubmitActivity.this);
@@ -132,10 +146,42 @@ public class SubmitActivity extends AppCompatActivity {
         mDialog.show();
     }
 
-    public void clearFormEntry(){
+    public void clearFormEntry() {
         mFirstNameEditText.setText("");
         mLastNameEditText.setText("");
         mEmailEditText.setText("");
         mGithubLinkEditText.setText("");
+    }
+
+    public boolean isValidFormData() {
+        getFormData();
+
+        boolean isValid = false;
+
+        if (mFirstName.trim().isEmpty()) {
+            mFirstNameEditText.requestFocus();
+            mFirstNameEditText.setError("First Name Required!");
+        } else if (mLastName.trim().isEmpty()) {
+            mLastNameEditText.requestFocus();
+            mLastNameEditText.setError("Last Name Required!");
+        } else if (mEmail.trim().isEmpty()) {
+            mEmailEditText.requestFocus();
+            mEmailEditText.setError("Email Required!");
+        } else if (mGhLink.trim().isEmpty()) {
+            mGithubLinkEditText.requestFocus();
+            mGithubLinkEditText.setError("Project Link Required!");
+        } else {
+            isValid = true;
+        }
+
+        return isValid;
+
+    }
+
+    private void getFormData() {
+        mFirstName = mFirstNameEditText.getText().toString();
+        mLastName = mLastNameEditText.getText().toString();
+        mEmail = mEmailEditText.getText().toString();
+        mGhLink = mGithubLinkEditText.getText().toString();
     }
 }
