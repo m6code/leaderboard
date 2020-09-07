@@ -41,6 +41,7 @@ dependencies {
 
     // Logging
     implementation 'com.squareup.okhttp3:logging-interceptor:4.8.1'
+    implementation 'androidx.wear:wear:1.0.0'
 
     // Testing
     testImplementation 'junit:junit:4.12'
