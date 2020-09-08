@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import org.jetbrains.annotations.NotNull;
+
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private Context mContext; // A variable that holds the name of the current tab
@@ -27,6 +29,7 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
      * @param position the current position
      * @return the appropriate fragment
      */
+    @NotNull
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {

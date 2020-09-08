@@ -1,6 +1,9 @@
 # Leaderboard
 Google Africa Developer Scholarship Phase II Associate Android Developer Practice Project
 
+# Demo
+![Demo Animation](screenshots/demo.gif)
+
 ## Building a GADS Leaderboard Mobile Application
 
 ### Description
@@ -24,3 +27,12 @@ This project uses:
  - Skill IQ Leaders - /api/skilliq
 
  - You can also find all resources and designs needed for this project [here](https://drive.google.com/drive/folders/1l-huMnFzu0Lh_olBCzHgovsUCwbKouMb?usp=sharing)
+
+ ## Screenshots
+ ![Splash Screen](screenshots/1_splash.png)
+ ![Learners Screen](screenshots/2_learners.png)
+ ![Skill IQ Screen](screenshots/3_skillQ.png)
+ ![Submit Form Screen](screenshots/4_submit_form.png)
+ ![Confirm Submit Screen](screenshots/5_confirm_submit.png)
+ ![Success Screen](screenshots/6_submit_success.png)
+ ![Failure Screen](screenshots/7_submit_fail.png)
