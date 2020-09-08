@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/yes_btn_background"
         android:text="@string/yes"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#F9A825"
