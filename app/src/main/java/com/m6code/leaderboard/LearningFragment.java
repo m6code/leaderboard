@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -78,6 +79,8 @@ public class LearningFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_learning, container, false);
 
+        final ProgressBar progressBar = rootView.findViewById(R.id.progressBar);
+
         final RecyclerView learnersList = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         final LinearLayoutManager learningLayoutManager = new LinearLayoutManager(getContext());
         learnersList.setLayoutManager(learningLayoutManager);
@@ -96,6 +99,7 @@ public class LearningFragment extends Fragment {
             public void onResponse(@NotNull Call<ArrayList<Learner>> call, @NotNull Response<ArrayList<Learner>> response) {
                 LearningFragRecyclerAdapter learningFragRecyclerAdapter =
                         new LearningFragRecyclerAdapter(getContext(), response.body());
+                progressBar.setVisibility(View.GONE);
                 learnersList.setAdapter(learningFragRecyclerAdapter);
             }
 
