@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.m6code.leaderboard.data.SkillQ;
 
 import java.util.ArrayList;
@@ -38,9 +40,16 @@ public class SkillFragRecyclerAdapter extends RecyclerView.Adapter<SkillFragRecy
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         SkillQ skillQ = mSkillData.get(position);
-        holder.mLearnerBadge.setImageResource(R.drawable.skill_iq_trimmed);
         holder.mLearnerName.setText(skillQ.getName());
         holder.mLearnerDetails.setText(String.format("%s%s%s", skillQ.getScore(), mContext.getString(R.string.skill_iq_score), skillQ.getCountry())); //  replace " skill IQ score, " with "mContext.getString(R.string.skill_iq_score)" works also
+
+        // Load images from API into imageView with glide
+        Glide.with(mContext)
+                .load(skillQ.getBadgeUrl())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.image_placeholder)
+                .into(holder.mLearnerBadge);
+
         holder.mCurrentPosition = position;
     }
 

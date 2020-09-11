@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.m6code.leaderboard.data.Learner;
 
 import java.util.ArrayList;
@@ -38,10 +40,16 @@ public class LearningFragRecyclerAdapter extends RecyclerView.Adapter<LearningFr
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Learner learner = mLearningData.get(position);
-        holder.mLearnerBadge.setImageResource(R.drawable.top_learner);
         holder.mLearnerName.setText(learner.getName());
         holder.mLearnerDetails.setText(learner.getHours() + " learning hours, " + learner.getCountry()); // Todo: replace " learning hours, " with "mContext.getString(R.string.learning_hours_string)"
         holder.mCurrentPosition = position;
+
+        // Load images from API into imageView with glide
+        Glide.with(mContext)
+                .load(learner.getBadgeUrl())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.image_placeholder)
+                .into(holder.mLearnerBadge);
     }
 
     @Override
